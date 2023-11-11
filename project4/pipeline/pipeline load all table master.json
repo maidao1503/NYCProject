@@ -142,7 +142,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "NYC_Payroll_EMP_MD",
+						"referenceName": "ds_NYC_Payroll_EMP_MD",
 						"type": "DatasetReference"
 					},
 					"name": "sinkPayrollEmd"
