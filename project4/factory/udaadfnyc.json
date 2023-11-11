@@ -1,0 +1,9 @@
+{
+	"name": "udaadfnyc",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6d960680-4db2-4026-9a4e-a3be0b07bdca",
+		"tenantId": "f958e84a-92b8-439f-a62d-4f45996b6d07"
+	}
+}
