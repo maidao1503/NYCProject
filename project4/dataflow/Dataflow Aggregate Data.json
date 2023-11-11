@@ -44,7 +44,7 @@
 			],
 			"scriptLines": [
 				"parameters{",
-				"     dataflow_param_fiscalyear as integer",
+				"     dataflow_param_fiscalyear as integer (2018)",
 				"}",
 				"source(output(",
 				"          AgencyID as string,",
