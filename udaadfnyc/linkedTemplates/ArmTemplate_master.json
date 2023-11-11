@@ -1,0 +1,77 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "udaadfnyc"
+		},
+		"ls_adl_nycpayroll_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adl_nycpayroll'"
+		},
+		"ls_adl_synapse_nycpayroll_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adl_synapse_nycpayroll'"
+		},
+		"ls_sqldb_nycpayroll_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_sqldb_nycpayroll'"
+		},
+		"ls_adl_nycpayroll_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nycstorageaccount.dfs.core.windows.net/"
+		},
+		"ls_adl_synapse_nycpayroll_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://synapsestoreageacc.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "udaadfnyc_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_adl_nycpayroll_accountKey": {
+						"value": "[parameters('ls_adl_nycpayroll_accountKey')]"
+					},
+					"ls_adl_synapse_nycpayroll_accountKey": {
+						"value": "[parameters('ls_adl_synapse_nycpayroll_accountKey')]"
+					},
+					"ls_sqldb_nycpayroll_connectionString": {
+						"value": "[parameters('ls_sqldb_nycpayroll_connectionString')]"
+					},
+					"ls_adl_nycpayroll_properties_typeProperties_url": {
+						"value": "[parameters('ls_adl_nycpayroll_properties_typeProperties_url')]"
+					},
+					"ls_adl_synapse_nycpayroll_properties_typeProperties_url": {
+						"value": "[parameters('ls_adl_synapse_nycpayroll_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
